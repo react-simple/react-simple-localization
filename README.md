@@ -1,5 +1,8 @@
 # React Simple! Localization Utility Library
-Basic utility functions for React application development. This documentation is for version 0.5.0.
+Basic utility functions for React application development. 
+
+This documentation is for version 0.5.0.
+
 Supports parsing and formatting number, date and boolean values using pre-defined (ISO, EN-US, HU) and custom cultures for localization and globalization. 
 Any format can be specified by using templates and regular expressions. 
 
@@ -48,7 +51,7 @@ The custom callback will be called with all parameters and a callback to the def
 
 ### Types
 - **NumberFormatOptions, DateFormatOptions, BooleanFormatOptions**: Parameters for formatting and parsing values.
-- **CultureInfo (DateTimeFormat, NumberFormat, BooleanFormat**: Formatting specifiers for localization and globalization.
+- **CultureInfo, DateTimeFormat, NumberFormat, BooleanFormat**: Formatting specifiers for localization and globalization.
 
 ### Constants
 - **DATE_FORMATS, NUMBER_FORMATS, BOOLEAN_FORMATS** and **CULTURE_INFO** contains predefined formats (**ISO, EN-US, HU** atm.),
