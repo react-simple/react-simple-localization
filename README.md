@@ -13,7 +13,7 @@ Features:
   - Current culture from **REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current**: **tryParse&lt;*type*&gt;Local(*value*), format&lt;*type*&gt;Local(*value*)**
   - ISO format: **tryParse&lt;*type*&gt;ISO(*value*), format&lt;*type*&gt;ISO(*value*)**
 - **Dependency injection** for pluggable architecture. All the important methods can be replaced with custom implementation by setting REACT_SIMPLE_LOCALIZATION.DI members.
-- **Unit tests** for all fetaures
+- **Unit tests** for all features
 
 # Usage
 
