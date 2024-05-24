@@ -64,7 +64,7 @@ function tryParseValue_default(
 		booleanFormat: ValueOrArray<Pick<CultureInfoBooleanFormat, "true_synonyms" | "false_synonyms">>
 	},
 	options: {
-		forcedType?: "string" | "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
+		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	}
 ): ValueType | undefined {
 	if (isNullOrUndefined(value)) {
@@ -74,9 +74,6 @@ function tryParseValue_default(
 		switch (options.forcedType) {
 			case "boolean":
 				return tryParseBoolean(value, format.booleanFormat);
-			
-			case "string":
-				return undefined; // not formatting here, just parsing
 			
 			case "date":
 				return new Date(value);
@@ -90,9 +87,6 @@ function tryParseValue_default(
 		switch (options.forcedType) {
 			case "number":
 				return value ? 1 : 0;
-
-			case "string":
-				return undefined; // not formatting here, just parsing
 
 			case "date":
 				return undefined;
@@ -109,9 +103,6 @@ function tryParseValue_default(
 
 			case "boolean":
 				return undefined;
-
-			case "string":
-				return undefined; // not formatting here, just parsing
 
 			// date, undefined
 			default:
@@ -150,7 +141,7 @@ export function tryParseValue(
 		booleanFormat: ValueOrArray<Pick<CultureInfoBooleanFormat, "true_synonyms" | "false_synonyms">>
 	},
 	options: {
-		forcedType?: "string" | "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
+		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	} = {}
 ): ValueType | undefined{
 	return REACT_SIMPLE_LOCALIZATION.DI.value.tryParseValue(value, format, options, tryParseValue_default);
@@ -159,7 +150,7 @@ export function tryParseValue(
 export function tryParseValueISO(
 	value: unknown,
 	options: {
-		forcedType?: "string" | "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
+		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	} = {}
 ): ValueType | undefined {
 	return tryParseValue(value, CULTURE_INFO.ISO, options);
@@ -168,7 +159,7 @@ export function tryParseValueISO(
 export function tryParseValueLocal(
 	value: unknown,
 	options: {
-		forcedType?: "string" | "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
+		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	} = {}
 ): ValueType | undefined{
 	return tryParseValue(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT, options);

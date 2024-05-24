@@ -77,7 +77,7 @@ export interface ReactSimpleLocalizationDependencyInjection {
 				booleanFormat: ValueOrArray<Pick<CultureInfoBooleanFormat, "true_synonyms" | "false_synonyms">>
 			},
 			options: {
-				forcedType?: "string" | "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
+				forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 			},
 			defaultImpl: ReactSimpleLocalizationDependencyInjection["value"]["tryParseValue"]
 		) => ValueType | undefined;
