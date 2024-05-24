@@ -37,11 +37,11 @@ it('tryParseBoolean.no', () => {
 });
 
 it('tryParseBoolean.cultureInfo.true', () => {
-	expect(tryParseBoolean("igen", CULTURE_INFO.BOOLEAN_FORMATS.HU)).toBe(true);
+	expect(tryParseBoolean("igen", CULTURE_INFO.formats.boolenFormats.HU)).toBe(true);
 });
 
 it('tryParseBoolean.cultureInfo.false', () => {
-	expect(tryParseBoolean("nem", CULTURE_INFO.BOOLEAN_FORMATS.HU)).toBe(false);
+	expect(tryParseBoolean("nem", CULTURE_INFO.formats.boolenFormats.HU)).toBe(false);
 });
 
 it('formatBoolean.true', () => {
@@ -61,9 +61,9 @@ it('formatBoolean.customFormat.false', () => {
 });
 
 it('formatBoolean.cultureInfo.true', () => {
-	expect(formatBoolean(true, CULTURE_INFO.BOOLEAN_FORMATS.HU)).toBe("Igen");
+	expect(formatBoolean(true, CULTURE_INFO.formats.boolenFormats.HU)).toBe("Igen");
 });
 
 it('formatBoolean.cultureInfo.false', () => {
-	expect(formatBoolean(false, CULTURE_INFO.BOOLEAN_FORMATS.HU)).toBe("Nem");
+	expect(formatBoolean(false, CULTURE_INFO.formats.boolenFormats.HU)).toBe("Nem");
 });

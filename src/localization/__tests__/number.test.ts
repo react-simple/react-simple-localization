@@ -40,7 +40,7 @@ it('formatNumber.customFormat.noThousandSeparator', () => {
 });
 
 it('formatNumber.cultureInfo.hu', () => {
-	const format = CULTURE_INFO.NUMBER_FORMATS.HU;
+	const format = CULTURE_INFO.formats.numberFormats.HU;
 
 	expect(formatNumber(0, format)).toBe("0");
 	expect(formatNumber(1.1, format)).toBe("1,1");
@@ -60,7 +60,7 @@ it('formatNumber.cultureInfo.hu', () => {
 });
 
 it('formatNumbeLocal.currentCulture.hu', () => {
-	REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = CULTURE_INFO.HU;
+	REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = CULTURE_INFO.cultures.HU;
 
 	try {
 		expect(formatNumberLocal(0)).toBe("0");
@@ -80,12 +80,12 @@ it('formatNumbeLocal.currentCulture.hu', () => {
 		expect(formatNumberLocal(12345678.12345678)).toBe("12.345.678,123.456.78");
 	}
 	finally {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.DEFAULT;
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.default;
 	}
 });
 
 it('formatNumber.cultureInfo.custom', () => {
-	const format = { ...CULTURE_INFO.NUMBER_FORMATS.HU, thousandSeparator: " " };
+	const format = { ...CULTURE_INFO.formats.numberFormats.HU, thousandSeparator: " " };
 
 	expect(formatNumber(0, format)).toBe("0");
 	expect(formatNumber(1.1, format)).toBe("1,1");
@@ -153,7 +153,7 @@ it('tryParseFloatISO', () => {
 
 it('tryParseFloatISO.cultureIndependent', () => {
 	try {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = CULTURE_INFO.HU;
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = CULTURE_INFO.cultures.HU;
 
 		expect(tryParseFloatISO("1")).toBe(1);
 		expect(tryParseFloatISO("1.1")).toBe(1.1);
@@ -161,13 +161,13 @@ it('tryParseFloatISO.cultureIndependent', () => {
 		expect(tryParseFloatISO("")).toBe(undefined);
 	}
 	finally {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.DEFAULT;
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.default;
 	}
 });
 
 it('tryParseFloatLocal.currentCulture.EN-US', () => {
 	try {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = CULTURE_INFO["EN-US"];
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = CULTURE_INFO.cultures["EN-US"];
 
 		expect(tryParseFloatLocal("1,000")).toBe(1000);
 		expect(tryParseFloatLocal("1,000.1")).toBe(1000.1);
@@ -176,13 +176,13 @@ it('tryParseFloatLocal.currentCulture.EN-US', () => {
 		expect(tryParseFloatLocal("")).toBe(undefined);
 	}
 	finally {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.DEFAULT
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.default
 	}
 });
 
 it('tryParseFloatLocal.currentCulture.HU', () => {
 	try {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = CULTURE_INFO.HU;
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = CULTURE_INFO.cultures.HU;
 
 		expect(tryParseFloatLocal("1.000")).toBe(1000);
 		expect(tryParseFloatLocal("1.000,1")).toBe(1000.1);
@@ -191,12 +191,12 @@ it('tryParseFloatLocal.currentCulture.HU', () => {
 		expect(tryParseFloatLocal("")).toBe(undefined);
 	}
 	finally {
-		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.DEFAULT
+		REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current = REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.default
 	}
 });
 
 it('tryParseFloat.cultureInfo.EN-US', () => {
-	const format = CULTURE_INFO["EN-US"].numberFormat;
+	const format = CULTURE_INFO.cultures["EN-US"].numberFormat; // same as CULTURE_INFO.formats.numberFormats["EN-US"]
 
 	expect(tryParseFloat("1,000", format)).toBe(1000);
 	expect(tryParseFloat("1,000.1", format)).toBe(1000.1);
@@ -206,7 +206,7 @@ it('tryParseFloat.cultureInfo.EN-US', () => {
 });
 
 it('tryParseFloatLocal.cultureInfo.HU', () => {
-	const format = CULTURE_INFO.HU.numberFormat;
+	const format = CULTURE_INFO.cultures.HU.numberFormat; // same as CULTURE_INFO.formats.numberFormats.HU
 
 	expect(tryParseFloat("1.000", format)).toBe(1000);
 	expect(tryParseFloat("1.000,1", format)).toBe(1000.1);

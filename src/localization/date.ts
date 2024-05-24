@@ -20,7 +20,7 @@ function tryParseDate_default(value: unknown, formats: ValueOrArray<CultureInfoD
 	}
 	else {
 		for (const format of getResolvedArray(formats)) {
-			const dateFormat = format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat;
+			const dateFormat = format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat;
 
 			const dateMatch = (
 				(dateFormat.dateTimeFormatRegExp && value.match(dateFormat.dateTimeFormatRegExp)) ||
@@ -89,11 +89,11 @@ export function tryParseDateISO(value: unknown): Date | undefined {
 }
 
 export function tryParseDateLocal(value: unknown): Date | undefined {
-	return tryParseDate(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat);
+	return tryParseDate(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat);
 }
 
 export function tryParseDateLocalOrISO(value: unknown): Date | undefined {
-	return tryParseDate(value, [DATE_FORMATS.ISO, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat]);
+	return tryParseDate(value, [DATE_FORMATS.ISO, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat]);
 }
 
 function formatDate_default(
@@ -105,7 +105,7 @@ function formatDate_default(
 		value = dateAdd(value, "minute", value.getTimezoneOffset());
 	}
 
-	return (format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat).dateFormat
+	return (format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat).dateFormat
 		.replaceAll("yyyy", value.getFullYear().toString())
 		.replaceAll("yy", (value.getFullYear() % 100).toString())
 		.replaceAll("MM", formatNumberLocal(value.getMonth() + 1, { minIntegerDigits: 2 }))
@@ -134,7 +134,7 @@ export function formatDateISO(value: Date, options: Pick<DateTimeFormatOptions, 
 }
 
 export function formatDateLocal(value: Date): string {
-	return formatDate(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat);
+	return formatDate(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat);
 }
 
 function formatDateTime_default(
@@ -142,7 +142,7 @@ function formatDateTime_default(
 	format: Pick<CultureInfoDateFormat, "dateTimeFormat">,
 	options: DateTimeFormatOptions = {}
 ): string {
-	const dateTimeFormat = (format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat).dateTimeFormat;
+	const dateTimeFormat = (format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat).dateTimeFormat;
 
 	if (options.utc) {
 		value = dateAdd(value, "minute", value.getTimezoneOffset());
@@ -186,7 +186,7 @@ export function formatDateTimeISO(value: Date, options: Pick<DateTimeFormatOptio
 }
 
 export function formatDateTimeLocal(value: Date, options: DateTimeFormatOptions = {}): string {
-	return formatDateTime(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.dateFormat, options);
+	return formatDateTime(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat, options);
 }
 
 const getDateHasTime = (d: Date) => {

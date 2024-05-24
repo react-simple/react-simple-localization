@@ -51,11 +51,11 @@ export function tryParseBooleanISO(value: unknown): boolean | undefined {
 }
 
 export function tryParseBooleanLocal(value: unknown): boolean | undefined {
-	return tryParseBoolean(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.booleanFormat);
+	return tryParseBoolean(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.booleanFormat);
 }
 
 export function tryParseBooleanLocalOrISO(value: unknown): boolean | undefined {
-	return tryParseBoolean(value, [BOOLEAN_FORMATS.ISO, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.booleanFormat]);
+	return tryParseBoolean(value, [BOOLEAN_FORMATS.ISO, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.booleanFormat]);
 }
 
 function formatBoolean_default(value: boolean, format: Pick<CultureInfoBooleanFormat, "true_format" | "false_format">): string {
@@ -67,7 +67,7 @@ REACT_SIMPLE_LOCALIZATION.DI.boolean.formatBoolean = formatBoolean_default;
 export const formatBoolean = (value: boolean, format?: Pick<CultureInfoBooleanFormat, "true_format" | "false_format">) => {
 	return REACT_SIMPLE_LOCALIZATION.DI.boolean.formatBoolean(
 		value,
-		format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.booleanFormat,
+		format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.booleanFormat,
 		formatBoolean_default
 	);
 };
@@ -77,5 +77,5 @@ export const formatBooleanISO = (value: boolean) => {
 };
 
 export const formatBooleanLocal = (value: boolean) => {
-	return formatBoolean(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.booleanFormat);
+	return formatBoolean(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.booleanFormat);
 };

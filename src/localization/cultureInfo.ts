@@ -23,25 +23,29 @@ const HU: CultureInfo = {
 };
 
 export const CULTURE_INFO: {
-	// formats
-	readonly DATE_FORMATS: typeof DATE_FORMATS;
-	readonly BOOLEAN_FORMATS: typeof BOOLEAN_FORMATS;
-	readonly NUMBER_FORMATS: typeof NUMBER_FORMATS;
+	readonly formats: {
+		readonly dateFormats: typeof DATE_FORMATS;
+		readonly boolenFormats: typeof BOOLEAN_FORMATS;
+		readonly numberFormats: typeof NUMBER_FORMATS;
+	};
 
-	// cultures
-	readonly ISO: CultureInfo;
-	readonly 'EN-US': CultureInfo;
-	readonly HU: CultureInfo;
-	readonly ALL: CultureInfo[];
+	readonly cultures: {
+		readonly ISO: CultureInfo;
+		readonly 'EN-US': CultureInfo;
+		readonly HU: CultureInfo;
+		readonly ALL: CultureInfo[];
+	}
 } = {
-	// formats
-	DATE_FORMATS,
-	BOOLEAN_FORMATS,
-	NUMBER_FORMATS,
+	formats: {
+		dateFormats: DATE_FORMATS,
+		boolenFormats: BOOLEAN_FORMATS,
+		numberFormats: NUMBER_FORMATS
+	},
 
-	// cultures
-	ISO,
-	'EN-US': EN_US,
-	HU,
-	ALL: [ISO, EN_US, HU]
+	cultures: {
+		ISO,
+		'EN-US': EN_US,
+		HU,
+		ALL: [ISO, EN_US, HU]
+	}
 };

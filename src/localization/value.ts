@@ -45,14 +45,14 @@ export function formatValueISO(
 	value: unknown,
 	options: Pick<DateTimeFormatOptions, "utc"> & NumberFormatOptions & { dateTime?: boolean } = {}
 ): string {
-	return formatValue(value, CULTURE_INFO.ISO, options);
+	return formatValue(value, CULTURE_INFO.cultures.ISO, options);
 }
 
 export function formatValueLocal(
 	value: unknown,
 	options: Pick<DateTimeFormatOptions, "utc"> & NumberFormatOptions & { dateTime?: boolean } = {}
 ): string {
-	return formatValue(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT, options);
+	return formatValue(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current, options);
 }
 
 function tryParseValue_default(
@@ -153,7 +153,7 @@ export function tryParseValueISO(
 		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	} = {}
 ): ValueType | undefined {
-	return tryParseValue(value, CULTURE_INFO.ISO, options);
+	return tryParseValue(value, CULTURE_INFO.cultures.ISO, options);
 }
 
 export function tryParseValueLocal(
@@ -162,5 +162,5 @@ export function tryParseValueLocal(
 		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	} = {}
 ): ValueType | undefined{
-	return tryParseValue(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT, options);
+	return tryParseValue(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current, options);
 }

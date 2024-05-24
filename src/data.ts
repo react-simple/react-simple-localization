@@ -6,8 +6,8 @@ const stub: any = () => { };
 
 export const REACT_SIMPLE_LOCALIZATION: ReactSimpleLocalization = {
 	CULTURE_INFO: {
-		CURRENT: CULTURE_INFO["EN-US"],
-		DEFAULT: CULTURE_INFO["EN-US"]
+		current: CULTURE_INFO.cultures["EN-US"],
+		default: CULTURE_INFO.cultures["EN-US"]
 	},
 		
 	DI: {

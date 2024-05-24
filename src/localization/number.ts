@@ -1,7 +1,7 @@
 import { REACT_SIMPLE_LOCALIZATION } from "data";
 import { CultureInfoNumberFormat, NumberFormatOptions } from "./types";
 import { isEmpty, isNumber, isString, stringReplaceChars } from "@react-simple/react-simple-util";
-import { CULTURE_INFO } from "./cultureInfo";
+import { NUMBER_FORMATS } from "internal";
 
 // uses REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT or the specified format/culture to parse
 function tryParseFloat_default(
@@ -15,7 +15,7 @@ function tryParseFloat_default(
 		return value;
 	}
 	else {
-		const numberFormat = format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.numberFormat;
+		const numberFormat = format || REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.numberFormat;
 
 		const str = (
 			numberFormat.decimalSeparator === "." && numberFormat.thousandSeparator === ""
@@ -52,7 +52,7 @@ export function tryParseFloat(
 // uses REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT or the specified format/culture to parse
 export function tryParseFloatLocal(value: unknown
 ): number | undefined {
-	return tryParseFloat(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.numberFormat);
+	return tryParseFloat(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.numberFormat);
 }
 
 export function tryParseFloatISO(value: unknown): number | undefined {	
@@ -115,7 +115,7 @@ function formatNumber_default(
 	format: Pick<CultureInfoNumberFormat, "decimalSeparator" | "thousandSeparator">,
 	options: NumberFormatOptions = {}
 ): string {
-	format ||= REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.numberFormat;
+	format ||= REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.numberFormat;
 	const { decimalSeparator } = format;
 	const { maxDecimalDigits, minDecimalDigits, minIntegerDigits, radix } = options;
 	const thousandSeparator = options.thousandSeparators !== false ? format.thousandSeparator : undefined;
@@ -188,9 +188,9 @@ export function formatNumber(
 }
 
 export const formatNumberISO = (value: number, options: NumberFormatOptions = {}) => {
-	return formatNumber(value, CULTURE_INFO.NUMBER_FORMATS.ISO, options);
+	return formatNumber(value, NUMBER_FORMATS.ISO, options);
 };
 
 export const formatNumberLocal = (value: number, options: NumberFormatOptions = {}) => {
-	return formatNumber(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT.numberFormat, options);
+	return formatNumber(value, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.numberFormat, options);
 };
