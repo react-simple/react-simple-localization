@@ -1,6 +1,6 @@
 {
   "name": "@react-simple/react-simple-localization",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "React Simple! Localization Utility Library",
   "author": "Mihály Tringel",
   "license": "MIT",
@@ -27,7 +27,7 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "tslib": "^2.6.2",
-    "@react-simple/react-simple-util": "^0.5.0"
+    "@react-simple/react-simple-util": "^0.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
