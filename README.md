@@ -5,13 +5,13 @@ This documentation is for version 0.5.0.
 
 Features:
 - Supports **parsing and formatting** number, date and boolean values using **pre-defined cultures** (ISO, EN-US, HU) or **custom cultures** for localization and globalization
-- Supports min/max decimal places, min digits and thousand separators for numbers
-- Supports custom formats by using templates and regular expressions for dates and date-times
-- Supports list of true-like and false-like values for booleans
+- Supports **min/max decimal places, min digits** and **thousand separators** for numbers
+- Supports **custom date formats** by using templates and regular expressions for dates and datetimes
+- Supports formatting and parsing booleans
 - Parsing and formatting methods can use 
-  - Parameter format/culture: **tryParse&lt;*type*&gt;(*value, format*), format&lt;*type*&gt;(*value, format*)**
-  - Current culture from **REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current**: **tryParse&lt;*type*&gt;Local(*value*), format&lt;*type*&gt;Local(*value*)**
-  - ISO format: **tryParse&lt;*type*&gt;ISO(*value*), format&lt;*type*&gt;ISO(*value*)**
+  - Format/culture parameter: tryParse&lt;*type*&gt;(*value, format*), format&lt;*type*&gt;(*value, format*)
+  - Current culture from **REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current**: tryParse&lt;*type*&gt;Local(*value*), format&lt;*type*&gt;Local(*value*)
+  - ISO format: tryParse&lt;*type*&gt;ISO(*value*), format&lt;*type*&gt;ISO(*value*)
 - **Dependency injection** for pluggable architecture. All the important methods can be replaced with custom implementation by setting REACT_SIMPLE_LOCALIZATION.DI members.
 - See **Unit tests** for samples for all features
 
@@ -52,8 +52,8 @@ The custom callback will be called with all parameters and a callback to the def
 ### Summary
 - **REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current** can be set to the desired default culture (EN-US by default).
 - Formatting functions have *default*, *local* and *ISO* variants: **tryParseNumber(), tryParseNumberLocal(), tryParseNumberISO()**
-- The local version uses the culture and the default version requires a format/culture parameter.
-- For dates and booleans multiple formats (regular expressions) can be specified simoultaneously and the matching one will be recognized automatically.
+- The local version uses the configured current cultur while the default version requires a format/culture parameter.
+- For dates and booleans multiple formats (regular expressions) can be specified simoultaneously and the first matching one will be used.
 
 ### Types
 - **NumberFormatOptions, DateFormatOptions, BooleanFormatOptions**: Parameters for formatting and parsing values.
