@@ -1,7 +1,7 @@
 import { sameDates } from "@react-simple/react-simple-util";
-import { REACT_SIMPLE_LOCALIZATION } from "data";
 import {
-	formatDate, formatDateLocal, formatDateTime, formatDateTimeLocal, getCulture, tryParseDate, tryParseDateISO, tryParseDateLocal 
+	formatDate, formatDateLocal, formatDateTime, formatDateTimeLocal, getCulture, tryParseDate, tryParseDateAnyFormat,
+	tryParseDateISO, tryParseDateLocal 
 } from "localization";
 
 it('tryParseDateISO.date', () => {
@@ -78,38 +78,16 @@ it('formatDateTime.cultureInfo.hourMinuteSecondMillisecond', () => {
 	expect(formatDateTime(new Date(2000, 0, 2, 3, 4, 5, 678), getCulture("HU").dateFormat, { milliseconds: true })).toBe("2000.01.02. 03:04:05.678");
 });
 
-it('tryParseDate.allCultureInfo.date', () => {
-	const format = Object.values(REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.formats.dateFormats);
-
-	expect(sameDates(tryParseDate("1/2/2000", format), new Date(2000, 0, 2))).toBe(true);
-	expect(sameDates(tryParseDate("2000-01-02", format), new Date(2000, 0, 2))).toBe(true);
-	expect(sameDates(tryParseDate("2000-1-2", format), new Date(2000, 0, 2))).toBe(true);
-	expect(sameDates(tryParseDate("2000.1.2", format), new Date(2000, 0, 2))).toBe(true);
+it('tryParseDateAnyFormat.date', () => {
+	expect(sameDates(tryParseDateAnyFormat("1/2/2000"), new Date(2000, 0, 2))).toBe(true);
+	expect(sameDates(tryParseDateAnyFormat("2000-01-02"), new Date(2000, 0, 2))).toBe(true);
+	expect(sameDates(tryParseDateAnyFormat("2000-1-2"), new Date(2000, 0, 2))).toBe(true);
+	expect(sameDates(tryParseDateAnyFormat("2000.1.2"), new Date(2000, 0, 2))).toBe(true);
 });
 
-it('tryParseDate.allCultureInfo.dateTime', () => {
-	const format = Object.values(REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.formats.dateFormats);
-
-	expect(sameDates(tryParseDate("1/2/2000 3:4:5.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-	expect(sameDates(tryParseDate("2000-01-02T03:04:05.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-	expect(sameDates(tryParseDate("2000-1-2T3:4:5.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-	expect(sameDates(tryParseDate("2000.1.2 3:4:5.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-});
-
-it('tryParseDate.allDateFormats.date', () => {
-	const format = Object.values(REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.formats.dateFormats);
-
-	expect(sameDates(tryParseDate("1/2/2000", format), new Date(2000, 0, 2))).toBe(true);
-	expect(sameDates(tryParseDate("2000-01-02", format), new Date(2000, 0, 2))).toBe(true);
-	expect(sameDates(tryParseDate("2000-1-2", format), new Date(2000, 0, 2))).toBe(true);
-	expect(sameDates(tryParseDate("2000.1.2", format), new Date(2000, 0, 2))).toBe(true);
-});
-
-it('tryParseDate.allDateFormats.dateTime', () => {
-	const format = Object.values(REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.formats.dateFormats);
-
-	expect(sameDates(tryParseDate("1/2/2000 3:4:5.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-	expect(sameDates(tryParseDate("2000-01-02T03:04:05.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-	expect(sameDates(tryParseDate("2000-1-2T3:4:5.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
-	expect(sameDates(tryParseDate("2000.1.2 3:4:5.6789", format), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
+it('tryParseDateAnyFormat.dateTime', () => {
+	expect(sameDates(tryParseDateAnyFormat("1/2/2000 3:4:5.6789"), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
+	expect(sameDates(tryParseDateAnyFormat("2000-01-02T03:04:05.6789"), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
+	expect(sameDates(tryParseDateAnyFormat("2000-1-2T3:4:5.6789"), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
+	expect(sameDates(tryParseDateAnyFormat("2000.1.2 3:4:5.6789"), new Date(2000, 0, 2, 3, 4, 5, 678))).toBe(true);
 });

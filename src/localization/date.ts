@@ -98,6 +98,18 @@ export function tryParseDateLocalOrISO(value: unknown): Date | undefined {
 	return tryParseDate(value, [getISOCulture().dateFormat, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat]);
 }
 
+// tries parsing using all known formats, preferring the specified one first
+export function tryParseDateAnyFormat(value: unknown, preferredFormat?: CultureInfoDateFormat): Date | undefined {
+	preferredFormat ||= REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.dateFormat;
+
+	return tryParseDate(
+		value,
+		[
+			preferredFormat,
+			...Object.values(REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.formats.dateFormats).filter(t => t.formatId !== preferredFormat.formatId)
+		]);
+}
+
 function formatDate_default(
 	value: Date,
 	format: Pick<CultureInfoDateFormat, "dateFormat">,
