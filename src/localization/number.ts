@@ -1,7 +1,7 @@
 import { REACT_SIMPLE_LOCALIZATION } from "data";
 import { CultureInfoNumberFormat, NumberFormatOptions } from "./types";
 import { isEmpty, isNumber, isString, stringReplaceChars } from "@react-simple/react-simple-util";
-import { NUMBER_FORMATS } from "internal";
+import { getISOCulture } from "./cultureInfo";
 
 // uses REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.CURRENT or the specified format/culture to parse
 function tryParseFloat_default(
@@ -188,7 +188,7 @@ export function formatNumber(
 }
 
 export const formatNumberISO = (value: number, options: NumberFormatOptions = {}) => {
-	return formatNumber(value, NUMBER_FORMATS.ISO, options);
+	return formatNumber(value, getISOCulture().numberFormat, options);
 };
 
 export const formatNumberLocal = (value: number, options: NumberFormatOptions = {}) => {

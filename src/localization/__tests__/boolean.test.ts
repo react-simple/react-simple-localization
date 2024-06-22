@@ -1,4 +1,4 @@
-import { CULTURE_INFO, formatBoolean, formatBooleanLocal, tryParseBoolean, tryParseBooleanLocal } from "localization";
+import { formatBoolean, formatBooleanLocal, getCulture, tryParseBoolean, tryParseBooleanLocal } from "localization";
 
 it('tryParseBoolean.true', () => {
 	expect(tryParseBooleanLocal("true")).toBe(true);
@@ -37,11 +37,11 @@ it('tryParseBoolean.no', () => {
 });
 
 it('tryParseBoolean.cultureInfo.true', () => {
-	expect(tryParseBoolean("igen", CULTURE_INFO.formats.boolenFormats.HU)).toBe(true);
+	expect(tryParseBoolean("igen", getCulture("HU").booleanFormat)).toBe(true);
 });
 
 it('tryParseBoolean.cultureInfo.false', () => {
-	expect(tryParseBoolean("nem", CULTURE_INFO.formats.boolenFormats.HU)).toBe(false);
+	expect(tryParseBoolean("nem", getCulture("HU").booleanFormat)).toBe(false);
 });
 
 it('formatBoolean.true', () => {
@@ -61,9 +61,9 @@ it('formatBoolean.customFormat.false', () => {
 });
 
 it('formatBoolean.cultureInfo.true', () => {
-	expect(formatBoolean(true, CULTURE_INFO.formats.boolenFormats.HU)).toBe("Igen");
+	expect(formatBoolean(true, getCulture("HU").booleanFormat)).toBe("Igen");
 });
 
 it('formatBoolean.cultureInfo.false', () => {
-	expect(formatBoolean(false, CULTURE_INFO.formats.boolenFormats.HU)).toBe("Nem");
+	expect(formatBoolean(false, getCulture("HU").booleanFormat)).toBe("Nem");
 });

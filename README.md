@@ -30,9 +30,10 @@ npm run test
 import { ... } from "@react-simple/react-simple-localization";
 
 # Configuration
+
 ## REACT_SIMPLE_LOCALIZATION
 
-Members in the REACT_SIMPLE_LOCALIZATION object can be set to update the behavior of the provided functions.
+Members in the **REACT_SIMPLE_LOCALIZATION** object can be set to update the behavior of the provided functions.
 
 ### REACT_SIMPLE_LOCALIZATION.CULTURE_INFO
 

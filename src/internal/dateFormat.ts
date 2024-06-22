@@ -44,15 +44,8 @@ const HU: CultureInfoDateFormat = {
 	dateTimeFormatRegExp: /^(?<year>(\d{2}|\d{4}))[.-\/](?<month>\d{1,2})[.-\/](?<day>\d{1,2})\.? +(?<hour>\d{1,2}):(?<minute>\d{1,2})(:(?<second>\d{1,2})(.(?<millisecond>\d+))?)?$/,
 };
 
-export const DATE_FORMATS: {
-	readonly ISO: CultureInfoDateFormat; // ISO8601
-	readonly 'EN-US': CultureInfoDateFormat;
-	readonly HU: CultureInfoDateFormat;
-
-	readonly ALL: CultureInfoDateFormat[];
-} = {
+export const getDateFormats = () => ({
 	ISO,
 	'EN-US': EN_US,
-	HU,
-	ALL: [ISO, EN_US, HU]
-};
+	HU
+});

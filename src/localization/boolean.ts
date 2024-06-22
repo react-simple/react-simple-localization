@@ -1,7 +1,7 @@
 import { ValueOrArray, isArray, isString } from "@react-simple/react-simple-util";
-import { CultureInfoBooleanFormat } from ".";
-import { BOOLEAN_FORMATS } from "internal";
 import { REACT_SIMPLE_LOCALIZATION } from "data";
+import { CultureInfoBooleanFormat } from "./types";
+import { getISOCulture } from "./cultureInfo";
 
 // understands true, 1, yes, y, on, checked, enabled in different casing, string/number/boolean as TRUE
 function tryParseBoolean_default(
@@ -47,7 +47,7 @@ export function tryParseBoolean(
 }
 
 export function tryParseBooleanISO(value: unknown): boolean | undefined {
-	return tryParseBoolean(value, BOOLEAN_FORMATS.ISO);
+	return tryParseBoolean(value, getISOCulture().booleanFormat);
 }
 
 export function tryParseBooleanLocal(value: unknown): boolean | undefined {
@@ -55,7 +55,7 @@ export function tryParseBooleanLocal(value: unknown): boolean | undefined {
 }
 
 export function tryParseBooleanLocalOrISO(value: unknown): boolean | undefined {
-	return tryParseBoolean(value, [BOOLEAN_FORMATS.ISO, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.booleanFormat]);
+	return tryParseBoolean(value, [getISOCulture().booleanFormat, REACT_SIMPLE_LOCALIZATION.CULTURE_INFO.current.booleanFormat]);
 }
 
 function formatBoolean_default(value: boolean, format: Pick<CultureInfoBooleanFormat, "true_format" | "false_format">): string {
@@ -73,7 +73,7 @@ export const formatBoolean = (value: boolean, format?: Pick<CultureInfoBooleanFo
 };
 
 export const formatBooleanISO = (value: boolean) => {
-	return formatBoolean(value, BOOLEAN_FORMATS.ISO);
+	return formatBoolean(value, getISOCulture().booleanFormat);
 };
 
 export const formatBooleanLocal = (value: boolean) => {

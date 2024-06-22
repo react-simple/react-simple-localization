@@ -28,14 +28,8 @@ const HU: CultureInfoBooleanFormat = {
 	false_synonyms: [...DEFAULT_FALSE_SYNONYMS, "nem", "ki", "passzív", "inaktív"]
 };
 
-export const BOOLEAN_FORMATS: {
-	readonly ISO: CultureInfoBooleanFormat;
-	readonly 'EN-US': CultureInfoBooleanFormat;
-	readonly HU: CultureInfoBooleanFormat;
-	readonly ALL: CultureInfoBooleanFormat[];
-} = {
+export const getBoolenFormats = () => ({
 	ISO,
 	'EN-US': EN_US,
-	HU,
-	ALL: [ISO, EN_US, HU]
-};
+	HU
+});

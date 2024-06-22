@@ -5,7 +5,7 @@ import { CultureInfoBooleanFormat, CultureInfoDateFormat, CultureInfoNumberForma
 import { formatNumber, tryParseFloat } from "./number";
 import { formatDate, formatDateTime, tryParseDate } from "./date";
 import { formatBoolean, tryParseBoolean } from "./boolean";
-import { CULTURE_INFO } from "./cultureInfo";
+import { getISOCulture } from "./cultureInfo";
 
 function formatValue_default(
 	value: unknown,
@@ -45,7 +45,7 @@ export function formatValueISO(
 	value: unknown,
 	options: Pick<DateTimeFormatOptions, "utc"> & NumberFormatOptions & { dateTime?: boolean } = {}
 ): string {
-	return formatValue(value, CULTURE_INFO.cultures.ISO, options);
+	return formatValue(value, getISOCulture(), options);
 }
 
 export function formatValueLocal(
@@ -153,7 +153,7 @@ export function tryParseValueISO(
 		forcedType?: "number" | "date" | "boolean" // type is recognized automatically by default, but it can be forced
 	} = {}
 ): ValueType | undefined {
-	return tryParseValue(value, CULTURE_INFO.cultures.ISO, options);
+	return tryParseValue(value, getISOCulture(), options);
 }
 
 export function tryParseValueLocal(

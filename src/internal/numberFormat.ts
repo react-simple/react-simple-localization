@@ -19,14 +19,8 @@ const HU: CultureInfoNumberFormat = {
 	thousandSeparator: "."
 };
 
-export const NUMBER_FORMATS: {
-	readonly ISO: CultureInfoNumberFormat;
-	readonly 'EN-US': CultureInfoNumberFormat;
-	readonly HU: CultureInfoNumberFormat;
-	readonly ALL: CultureInfoNumberFormat[];
-} = {
+export const getNumberFormats = () => ({
 	ISO,
 	'EN-US': EN_US,
-	HU,
-	ALL: [ISO, EN_US, HU]
-};
+	HU
+});
